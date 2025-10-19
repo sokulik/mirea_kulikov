@@ -1,6 +1,7 @@
 package Practice4_4;
 
-
+import Practice4_4.Enums.*;
+import Practice4_4.Classes.*;
 
 public class Task4 {
     public static void task4() {
