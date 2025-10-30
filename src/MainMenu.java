@@ -143,10 +143,8 @@ public class MainMenu {
     }
 
     private static void openTask4() {
-        JOptionPane.showMessageDialog(mainMenuFrame,
-                "Задание 4 будет реализовано позже",
-                "Информация",
-                JOptionPane.INFORMATION_MESSAGE);
+        mainMenuFrame.setVisible(false);
+        Practice8_4.Task4.start(mainMenuFrame);
     }
 
     private static void openImageFileDialog() {
