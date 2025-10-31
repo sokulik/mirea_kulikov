@@ -20,7 +20,7 @@ public class Task1 extends JFrame {
         layoutComponents();
         addListeners();
 
-        setIconImage(new ImageIcon("src/resources/Icon.jpg").getImage());
+        setIconImage(new ImageIcon("src/resources/IconPR.jpg").getImage());
     }
 
 
@@ -103,11 +103,6 @@ public class Task1 extends JFrame {
     }
 
     public static void task1() {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new Task1().setVisible(true);
+        SwingUtilities.invokeLater(() -> new Task1().setVisible(true));
             }
-        });
     }
-}
