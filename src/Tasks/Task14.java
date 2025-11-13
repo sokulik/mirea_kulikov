@@ -1,4 +1,4 @@
-package Task14;
+package Tasks;
 
 public class Task14 {
 }

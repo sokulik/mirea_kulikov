@@ -1,4 +1,4 @@
-package Task2;
+package Tasks;
 
 import javax.swing.*;
 import java.awt.*;
@@ -7,8 +7,9 @@ public class Task2 extends JFrame{
     private JTextField inputField;
     private JTextArea outputArea;
     private JButton generateButton;
+    private JButton backButton;
 
-    public Task2(){
+    public Task2(JFrame mainMenuFrame){
     setTitle("от 1 до n");
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setSize(600, 400);
@@ -16,7 +17,7 @@ public class Task2 extends JFrame{
 
     initComponents();
     layoutComponents();
-    addListeners();
+    addListeners(mainMenuFrame);
 
     setIconImage(new ImageIcon("/src/resources/IconPR.jpg").getImage());
     }
@@ -27,6 +28,7 @@ public class Task2 extends JFrame{
         outputArea.setEditable(false);
         outputArea.setFont(new Font("Monospaced", Font.PLAIN, 14));
         generateButton = new JButton("Генерировать");
+        backButton = new JButton("В главное меню");
     }
 
     private void layoutComponents(){
@@ -35,21 +37,33 @@ public class Task2 extends JFrame{
         topPanel.add(inputField);
         topPanel.add(generateButton);
 
+        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        bottomPanel.add(backButton);
+
         JScrollPane scrollPane = new JScrollPane(outputArea);
+
         add(topPanel, BorderLayout.NORTH);
         add(scrollPane, BorderLayout.CENTER);
+        add(bottomPanel, BorderLayout.SOUTH);
+
+
 
         topPanel.setBorder(BorderFactory.createEmptyBorder(10, 10,10, 10));
         scrollPane.setBorder(BorderFactory.createEmptyBorder(0, 10, 10,10));
 
     }
 
-    private void addListeners() {
-        generateButton.addActionListener(e -> generateSequence());
-        inputField.addActionListener(e -> generateSequence());
+    private void addListeners(JFrame mainMenuFrame) {
+        generateButton.addActionListener(e -> execution());
+        inputField.addActionListener(e -> execution());
+        backButton.addActionListener( e -> {
+            dispose();
+            mainMenuFrame.setVisible(true);
+        });
+
 }
 
-    private void generateSequence(){
+    private void execution(){
         try{
             int n = Integer.parseInt(inputField.getText().trim());
 
@@ -82,8 +96,8 @@ public class Task2 extends JFrame{
         }
     }
 
-    public static void task2() {
-        SwingUtilities.invokeLater(() -> new Task2().setVisible(true));
+    public static void task2(JFrame mainMenuFrame) {
+        SwingUtilities.invokeLater(() -> new Task2(mainMenuFrame).setVisible(true));
     }
 }
 
