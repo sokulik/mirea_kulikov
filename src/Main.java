@@ -19,6 +19,6 @@ import Task17.Task17;
 
 public class Main {
     public static void main(String[] args) {
-        Task5.task5();
+        Task6.task6();
     }
 }
