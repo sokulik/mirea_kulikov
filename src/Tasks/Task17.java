@@ -80,7 +80,7 @@ public class Task17 extends JFrame{
         outputArea.append("Введено: " + number + "\n");
 
         if (number == 0) {
-            return 0; // Базовый случай
+            return 0;
         }
 
         int nextMax = findMax();

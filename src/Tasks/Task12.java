@@ -68,7 +68,7 @@ public class Task12 extends JFrame{
             outputArea.setText("Вводите натуральные числа (по одному в строке):\n");
             outputArea.append("Для завершения введите 0.\n\n");
 
-            result.setLength(0); // Очищаем предыдущий результат
+            result.setLength(0);
             printOddNumbers();
 
             outputArea.append("\nНечетные числа последовательности:\n");

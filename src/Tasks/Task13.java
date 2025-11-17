@@ -97,7 +97,7 @@ public class Task13 extends JFrame{
         }
 
         position++;
-        printOddPositionNumbers(); // Рекурсивный вызов
+        printOddPositionNumbers();
     }
 
     private int readIntFromKeyboard() {

@@ -73,7 +73,7 @@ public class Task10 extends JFrame{
         } catch (NumberFormatException ex) {
             showMessageAndReturn(this, "Введите корректное число!");
         } catch (IllegalArgumentException ex) {
-            showMessageAndReturn(this, ex.getMessage()); // Обрабатываем ошибку с нулями
+            showMessageAndReturn(this, ex.getMessage());
         }
     }
 
