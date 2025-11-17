@@ -130,7 +130,6 @@ public class Task9 extends JFrame {
     }
 
     private void generateSequences(int zeros, int ones, String current) {
-
         if (zeros == 0 && ones == 0) {
             sequences.add(current);
             currentCount++;
@@ -139,15 +138,13 @@ public class Task9 extends JFrame {
         if (zeros < 0 || ones < 0) {
             return;
         }
-        if (zeros > ones + 1) {
-            return;
-        }
 
         if (ones > 0) {
-            generateSequences(zeros, ones - 1, current + "1"); // Добавляем 1
+            generateSequences(zeros, ones - 1, current + "1");
         }
-        if (zeros > 0) {
-            generateSequences(zeros - 1, ones, current + "0"); // Добавляем 0
+
+        if (zeros > 0 && (current.isEmpty() || current.charAt(current.length() - 1) != '0')) {
+            generateSequences(zeros - 1, ones, current + "0");
         }
     }
 

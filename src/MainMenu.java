@@ -20,7 +20,7 @@ public class MainMenu {
         mainMenuFrame.setSize(700, 600);
         mainMenuFrame.setLocationRelativeTo(null);
         mainMenuFrame.setResizable(false);
-        mainMenuFrame.setIconImage(new ImageIcon("src/resources/DANYA.jpg").getImage());
+        mainMenuFrame.setIconImage(new ImageIcon("src/resources/IconPR.jpg").getImage());
 
         cardLayout = new CardLayout();
         cardsPanel = new JPanel(cardLayout);
@@ -42,7 +42,7 @@ public class MainMenu {
         mainPanel.setBackground(new Color(240,240, 240));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
 
-        JLabel titleLabel = new JLabel("Сраница - "+pageNumber, JLabel.CENTER);
+        JLabel titleLabel = new JLabel("Страница - "+pageNumber, JLabel.CENTER);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
         titleLabel.setForeground(new Color(70, 130, 180));
         titleLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 30, 0));
@@ -112,7 +112,7 @@ public class MainMenu {
     }
 
     private static JPanel createTaskPanel(int taskNumber, String description) {
-        // Создаем панель для кнопки с BorderLayout
+        //  BorderLayout
         JPanel taskPanel = new JPanel(new BorderLayout());
         taskPanel.setBackground(Color.WHITE);
         taskPanel.setBorder(BorderFactory.createCompoundBorder(
@@ -239,7 +239,7 @@ public class MainMenu {
             case 9:
                 Task9.task9(mainMenuFrame);
                 break;
-            /*case 10:
+            case 10:
                 Task10.task10(mainMenuFrame);
                 break;
             case 11:
@@ -262,7 +262,7 @@ public class MainMenu {
                 break;
             case 17:
                 Task17.task17(mainMenuFrame);
-                break;*/
+                break;
         }
     }
 
