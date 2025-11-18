@@ -1,4 +1,0 @@
-package Practices.Practice7;
-
-public class TaskDOP {
-}

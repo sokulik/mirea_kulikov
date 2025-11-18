@@ -116,7 +116,8 @@ public class PracticeTasksWindow extends JFrame {
     private int getTaskCountForPractice(int practiceNumber) {
         // Возвращаем количество заданий для каждой практики
         return switch (practiceNumber) {
-            case 1, 2, 9 -> 1;
+            case 1 -> 5;
+            case 2, 9 -> 1;
             case 3 -> 2;
             case 4, 8, 10, 13 -> 4;
             case 5, 7 -> 6;
@@ -133,9 +134,13 @@ public class PracticeTasksWindow extends JFrame {
         dispose();
 
         // Открываем конкретное задание
-        /*if (practiceNumber == 1) {
+        if (practiceNumber == 1) {
             switch (taskNumber) {
                 case 1 -> Practices.Practice1.Task1.task1(mainMenuFrame);
+                case 2 -> Practices.Practice1.Task2.task2(mainMenuFrame);
+                case 3 -> Practices.Practice1.Task3.task3(mainMenuFrame);
+                case 4 -> Practices.Practice1.Task4.task4(mainMenuFrame);
+                case 5 -> Practices.Practice1.Task5.task5(mainMenuFrame);
                 default -> showTaskNotImplemented(practiceNumber, taskNumber);
             }
         } else if (practiceNumber == 2){
@@ -157,7 +162,7 @@ public class PracticeTasksWindow extends JFrame {
                 case 4 -> Practices.Practice4.Task4.task4(mainMenuFrame);
                 default -> showTaskNotImplemented(practiceNumber, taskNumber);
             }
-        }else if (practiceNumber == 5){
+        }/*else if (practiceNumber == 5){
             switch (taskNumber) {
                 case 1 -> Practices.Practice5.Task3to4.task3to4(mainMenuFrame);
                 case 2 -> Practices.Practice5.Task6to9.task6to9(mainMenuFrame);
@@ -174,17 +179,17 @@ public class PracticeTasksWindow extends JFrame {
                 case 3 -> Practices.Practice6.Task7to8.task7to8(mainMenuFrame);
                 default -> showTaskNotImplemented(practiceNumber, taskNumber);
             }
-        }else if (practiceNumber == 7){
+        }*/else if (practiceNumber == 7){
             switch (taskNumber) {
                 case 1 -> Practices.Practice7.Task1.task1(mainMenuFrame);
                 case 2 -> Practices.Practice7.Task2.task2(mainMenuFrame);
                 case 3 -> Practices.Practice7.Task3.task3(mainMenuFrame);
                 case 4 -> Practices.Practice7.Task4.task4(mainMenuFrame);
                 case 5 -> Practices.Practice7.Task5.task5(mainMenuFrame);
-                case 6 -> Practices.Practice7.TaskDOP.taskDOP(mainMenuFrame);
+                case 6 -> Practices.Practice7.Task_DOP.task_dop(mainMenuFrame);
                 default -> showTaskNotImplemented(practiceNumber, taskNumber);
             }
-        }else */if (practiceNumber == 8){
+        }else if (practiceNumber == 8){
             switch (taskNumber) {
                 case 1 -> Practices.Practice8.Task1.task1(mainMenuFrame);
                 case 2 -> Practices.Practice8.Task2.task2(mainMenuFrame);
