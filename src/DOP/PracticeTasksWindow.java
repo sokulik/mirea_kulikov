@@ -184,7 +184,7 @@ public class PracticeTasksWindow extends JFrame {
                 case 6 -> Practices.Practice7.TaskDOP.taskDOP(mainMenuFrame);
                 default -> showTaskNotImplemented(practiceNumber, taskNumber);
             }
-        }else if (practiceNumber == 8){
+        }else */if (practiceNumber == 8){
             switch (taskNumber) {
                 case 1 -> Practices.Practice8.Task1.task1(mainMenuFrame);
                 case 2 -> Practices.Practice8.Task2.task2(mainMenuFrame);
@@ -205,7 +205,7 @@ public class PracticeTasksWindow extends JFrame {
                 case 4 -> Practices.Practice10.Task4.task4(mainMenuFrame);
                 default -> showTaskNotImplemented(practiceNumber, taskNumber);
             }
-        }else */if (practiceNumber == 11){
+        }else if (practiceNumber == 11){
             switch (taskNumber) {
                 case 1 -> Practices.Practice11.Task1.task1(mainMenuFrame);
                 case 2 -> Practices.Practice11.Task2.task2(mainMenuFrame);

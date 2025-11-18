@@ -1,5 +1,3 @@
-package Tasks;
-
 import DOP.PracticeTasksWindow;
 
 import javax.swing.*;
