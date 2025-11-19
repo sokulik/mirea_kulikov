@@ -162,10 +162,10 @@ public class PracticeTasksWindow extends JFrame {
                 case 4 -> Practices.Practice4.Task4.task4(mainMenuFrame);
                 default -> showTaskNotImplemented(practiceNumber, taskNumber);
             }
-        }/*else if (practiceNumber == 5){
+        }else if (practiceNumber == 5){
             switch (taskNumber) {
-                case 1 -> Practices.Practice5.Task3to4.task3to4(mainMenuFrame);
-                case 2 -> Practices.Practice5.Task6to9.task6to9(mainMenuFrame);
+                case 1 -> Practices.Practice5.Task3_4.task3_4(mainMenuFrame);
+                case 2 -> Practices.Practice5.Task6_9.task6_9(mainMenuFrame);
                 case 3 -> Practices.Practice5.Task10.task10(mainMenuFrame);
                 case 4 -> Practices.Practice5.Task11.task11(mainMenuFrame);
                 case 5 -> Practices.Practice5.Task12.task12(mainMenuFrame);
@@ -175,11 +175,11 @@ public class PracticeTasksWindow extends JFrame {
         }else if (practiceNumber == 6){
             switch (taskNumber) {
                 case 1 -> Practices.Practice6.Task4.task4(mainMenuFrame);
-                case 2 -> Practices.Practice6.Task5to6.task5to6(mainMenuFrame);
-                case 3 -> Practices.Practice6.Task7to8.task7to8(mainMenuFrame);
+                case 2 -> Practices.Practice6.Task5_6.task5_6(mainMenuFrame);
+                case 3 -> Practices.Practice6.Task7_8.task7_8(mainMenuFrame);
                 default -> showTaskNotImplemented(practiceNumber, taskNumber);
             }
-        }*/else if (practiceNumber == 7){
+        }else if (practiceNumber == 7){
             switch (taskNumber) {
                 case 1 -> Practices.Practice7.Task1.task1(mainMenuFrame);
                 case 2 -> Practices.Practice7.Task2.task2(mainMenuFrame);
