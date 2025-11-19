@@ -1,22 +1,19 @@
 package Practices.Practice1;
 
+import DOP.BaseTaskFrame;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public class Task5 extends JFrame {
-    private JFrame mainMenuFrame;
+public class Task5 extends BaseTaskFrame {
     private JTextArea resultArea;
     private JTextField numberField;
 
-    public Task5(JFrame parentFrame) {
-        super("Задание 5: Вычисление факториала");
-        this.mainMenuFrame = mainMenuFrame;
-
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(500, 400);
-        setLocationRelativeTo(null);
+    public Task5(JFrame mainMenuFrame) {
+        super(mainMenuFrame,
+                "Задание 5: Вычисление факториала");
 
         initComponents();
         layoutComponents();
@@ -134,47 +131,16 @@ public class Task5 extends JFrame {
         return bottomPanel;
     }
 
-    private JButton createBackButton() {
-        JButton backButton = new JButton("← Назад");
-        backButton.setFont(new Font("Arial", Font.BOLD, 12));
-        backButton.setBackground(new Color(108, 117, 125));
-        backButton.setForeground(Color.WHITE);
-        backButton.setFocusPainted(false);
-        backButton.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(new Color(80, 90, 100), 2),
-                BorderFactory.createEmptyBorder(5, 10, 5, 10)
-        ));
-
-        backButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                backButton.setBackground(new Color(130, 140, 150));
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                backButton.setBackground(new Color(108, 117, 125));
-            }
-        });
-
-        backButton.addActionListener(e -> returnTomainMenu());
-        return backButton;
-    }
-
     private void addListeners() {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                returnTomainMenu();
+                returnToMainMenu();
             }
         });
 
         // Обработка Enter в текстовом поле
         numberField.addActionListener(e -> calculateFactorial());
-    }
-
-    private void returnTomainMenu() {
-        dispose();
-        if (mainMenuFrame != null) {
-            mainMenuFrame.setVisible(true);
-        }
     }
 
     public static void task5(JFrame mainMenuFrame) {

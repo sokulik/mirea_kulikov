@@ -7,19 +7,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public class PracticeTasksWindow extends JFrame {
-    private JFrame mainMenuFrame;
+public class PracticeTasksWindow extends BaseTaskFrame {
     private int practiceNumber;
 
     public PracticeTasksWindow(JFrame mainMenuFrame, int practiceNumber) {
-        super("Практика " + practiceNumber + " - Задания");
-        this.mainMenuFrame = mainMenuFrame;
+        super(mainMenuFrame,"Практика " + practiceNumber + " - Задания");
         this.practiceNumber = practiceNumber;
-
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(800, 600);
-        setLocationRelativeTo(null);
-        setResizable(false);
 
         initComponents();
         layoutComponents();

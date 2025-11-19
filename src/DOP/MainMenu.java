@@ -12,17 +12,24 @@ public class MainMenu {
     private static CardLayout cardLayout;
 
     public static void createMainMenu(String[] args) {
+        // Устанавливаем путь к фону из командной строки
         if (args.length > 0) {
             commandLineImagePath = args[0];
+            BackgroundManager.setBackgroundPath(commandLineImagePath);
         }
+
         mainMenuFrame = new JFrame("Практические работы 1-14 - Главное меню");
         mainMenuFrame.setSize(900, 700);
         mainMenuFrame.setLocationRelativeTo(null);
         mainMenuFrame.setResizable(false);
         mainMenuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        // ПРИМЕНЯЕМ ФОН К ГЛАВНОМУ МЕНЮ
+        BackgroundManager.applyBackgroundToFrame(mainMenuFrame);
+
         cardLayout = new CardLayout();
         cardsPanel = new JPanel(cardLayout);
+        cardsPanel.setOpaque(false); // Делаем панель прозрачной
 
         // Создаем страницы с практиками
         JPanel page1 = createPracticesPage(1, 1, 7);  // Практики 1-7
@@ -36,8 +43,9 @@ public class MainMenu {
     }
 
     private static JPanel createPracticesPage(int pageNumber, int startPractice, int endPractice) {
-        JPanel mainPanel = new JPanel(new BorderLayout());
-        mainPanel.setBackground(new Color(240, 240, 240));
+        // Используем полупрозрачную панель
+        JPanel mainPanel = BackgroundManager.createSemiTransparentPanel(new Color(240, 240, 240));
+        mainPanel.setLayout(new BorderLayout());
         mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         String title = "Практические работы " + startPractice + "-" + endPractice;
@@ -49,9 +57,9 @@ public class MainMenu {
 
         // Создаем сетку для практик
         int practiceCount = endPractice - startPractice + 1;
-        int rows = (practiceCount + 2) / 3; // Максимум 3 в строке
-        JPanel practicesPanel = new JPanel(new GridLayout(rows, 3, 15, 15));
-        practicesPanel.setBackground(new Color(240, 240, 240));
+        int rows = (practiceCount + 2) / 3;
+        JPanel practicesPanel = BackgroundManager.createTransparentPanel();
+        practicesPanel.setLayout(new GridLayout(rows, 3, 15, 15));
 
         for (int i = startPractice; i <= endPractice; i++) {
             JPanel practicePanel = createPracticePanel(i, getPracticeDescription(i));
@@ -61,30 +69,30 @@ public class MainMenu {
         mainPanel.add(practicesPanel, BorderLayout.CENTER);
 
         // Панель навигации и информации
-        JPanel navInfoPanel = new JPanel(new BorderLayout());
-        navInfoPanel.setBackground(new Color(240, 240, 240));
+        JPanel navInfoPanel = BackgroundManager.createTransparentPanel();
+        navInfoPanel.setLayout(new BorderLayout());
 
         // Панель навигации
-        JPanel navPanel = new JPanel(new FlowLayout());
-        navPanel.setBackground(new Color(240, 240, 240));
+        JPanel navPanel = BackgroundManager.createTransparentPanel();
+        navPanel.setLayout(new FlowLayout());
 
         if (pageNumber == 1) {
-            JButton nextPageButton = new JButton("Следующая страница →");
+            JButton nextPageButton = BackgroundManager.createStyledButton("Следующая страница →", new Color(70, 130, 180));
             nextPageButton.addActionListener(e -> cardLayout.show(cardsPanel, "page2"));
             navPanel.add(nextPageButton);
         } else {
-            JButton prevPageButton = new JButton("← Предыдущая страница");
+            JButton prevPageButton = BackgroundManager.createStyledButton("← Предыдущая страница", new Color(70, 130, 180));
             prevPageButton.addActionListener(e -> cardLayout.show(cardsPanel, "page1"));
             navPanel.add(prevPageButton);
         }
 
         // Информационная панель
-        JPanel infoPanel = new JPanel(new BorderLayout());
-        infoPanel.setBackground(new Color(240, 240, 240));
+        JPanel infoPanel = BackgroundManager.createSemiTransparentPanel(new Color(240, 240, 240));
+        infoPanel.setLayout(new BorderLayout());
 
         JLabel infoLabel = new JLabel("Выберите практическую работу для просмотра заданий", JLabel.CENTER);
         infoLabel.setFont(new Font("Arial", Font.ITALIC, 14));
-        infoLabel.setForeground(Color.GRAY);
+        infoLabel.setForeground(Color.DARK_GRAY);
 
         if (commandLineImagePath != null) {
             JLabel cmdInfoLabel = new JLabel("Аргумент командной строки: " + commandLineImagePath, JLabel.CENTER);
@@ -106,19 +114,16 @@ public class MainMenu {
     }
 
     private static JPanel createPracticePanel(int practiceNumber, String description) {
-        JPanel practicePanel = new JPanel(new BorderLayout());
-        practicePanel.setBackground(Color.WHITE);
+        JPanel practicePanel = BackgroundManager.createSemiTransparentPanel(Color.WHITE);
+        practicePanel.setLayout(new BorderLayout());
         practicePanel.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(new Color(200, 200, 200), 1),
                 BorderFactory.createEmptyBorder(15, 15, 15, 15)
         ));
 
-        JButton practiceButton = new JButton("Практика " + practiceNumber);
+        JButton practiceButton = BackgroundManager.createStyledButton("Практика " + practiceNumber, new Color(70, 130, 180));
         practiceButton.setFont(new Font("Arial", Font.BOLD, 16));
-        practiceButton.setBackground(new Color(70, 130, 180));
-        practiceButton.setForeground(Color.WHITE);
         practiceButton.setBorder(BorderFactory.createEmptyBorder(15, 5, 15, 5));
-        practiceButton.setFocusPainted(false);
         practiceButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         JLabel descLabel = new JLabel(description, JLabel.CENTER);
@@ -138,13 +143,11 @@ public class MainMenu {
 
         practicePanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                practicePanel.setBackground(new Color(230, 240, 255));
-                practiceButton.setBackground(new Color(100, 150, 200));
+                practicePanel.setBackground(new Color(230, 240, 255, 180));
             }
 
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                practicePanel.setBackground(Color.WHITE);
-                practiceButton.setBackground(new Color(70, 130, 180));
+                practicePanel.setBackground(new Color(255, 255, 255, 180));
             }
         });
 

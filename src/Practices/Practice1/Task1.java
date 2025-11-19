@@ -1,21 +1,17 @@
 package Practices.Practice1;
 
+import DOP.BaseTaskFrame;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Arrays;
 
-public class Task1 extends JFrame {
-    private JFrame mainMenuFrame;
+public class Task1 extends BaseTaskFrame { ;
 
     public Task1(JFrame mainMenuFrame) {
-        super("Задание 1: Сумма и среднее арифметическое");
-        this.mainMenuFrame = mainMenuFrame;
-
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(500, 400);
-        setLocationRelativeTo(null);
+        super(mainMenuFrame,"Задание 1: Сумма и среднее арифметическое");
 
         initComponents();
         layoutComponents();
@@ -91,30 +87,6 @@ public class Task1 extends JFrame {
         return bottomPanel;
     }
 
-    private JButton createBackButton() {
-        JButton backButton = new JButton("← Назад к меню");
-        backButton.setFont(new Font("Arial", Font.BOLD, 12));
-        backButton.setBackground(new Color(108, 117, 125));
-        backButton.setForeground(Color.WHITE);
-        backButton.setFocusPainted(false);
-        backButton.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(new Color(80, 90, 100), 2),
-                BorderFactory.createEmptyBorder(5, 10, 5, 10)
-        ));
-
-        backButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                backButton.setBackground(new Color(130, 140, 150));
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                backButton.setBackground(new Color(108, 117, 125));
-            }
-        });
-
-        backButton.addActionListener(e -> returnToMainMenu());
-        return backButton;
-    }
-
     private void addListeners() {
         addWindowListener(new WindowAdapter() {
             @Override
@@ -122,14 +94,6 @@ public class Task1 extends JFrame {
                 returnToMainMenu();
             }
         });
-    }
-
-    private void returnToMainMenu() {
-        dispose();
-        if (mainMenuFrame != null) {
-            mainMenuFrame.setVisible(true);
-            mainMenuFrame.toFront();
-        }
     }
 
     public static void task1(JFrame mainMenuFrame) {

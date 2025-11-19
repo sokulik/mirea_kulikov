@@ -1,5 +1,6 @@
 package Practices.Practice5;
 
+import DOP.BaseTaskFrame;
 import Practices.Practice5.Classes.T13.*;
 import javax.swing.*;
 import java.awt.*;
@@ -8,8 +9,7 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Task13 extends JFrame {
-    private JFrame mainMenuFrame;
+public class Task13 extends BaseTaskFrame {
     private JTextArea resultArea;
     private JTextArea observersArea;
     private ObservableStringBuilder osb;
@@ -17,14 +17,9 @@ public class Task13 extends JFrame {
     private JLabel statusLabel;
 
     public Task13(JFrame mainMenuFrame) {
-        super("Practice 5.13: ObservableStringBuilder (Observer Pattern)");
-        this.mainMenuFrame = mainMenuFrame;
+        super(mainMenuFrame,"Practice 5.13: ObservableStringBuilder (Observer Pattern)");
         this.osb = new ObservableStringBuilderImpl();
         this.observers = new ArrayList<>();
-
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(1000, 800);
-        setLocationRelativeTo(null);
 
         initComponents();
         layoutComponents();
@@ -535,30 +530,6 @@ public class Task13 extends JFrame {
         return bottomPanel;
     }
 
-    private JButton createBackButton() {
-        JButton backButton = new JButton("← Назад к меню");
-        backButton.setFont(new Font("Arial", Font.BOLD, 12));
-        backButton.setBackground(new Color(108, 117, 125));
-        backButton.setForeground(Color.WHITE);
-        backButton.setFocusPainted(false);
-        backButton.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(new Color(80, 90, 100), 2),
-                BorderFactory.createEmptyBorder(5, 10, 5, 10)
-        ));
-
-        backButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                backButton.setBackground(new Color(130, 140, 150));
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                backButton.setBackground(new Color(108, 117, 125));
-            }
-        });
-
-        backButton.addActionListener(e -> returnToMainMenu());
-        return backButton;
-    }
-
     private void addListeners() {
         addWindowListener(new WindowAdapter() {
             @Override
@@ -566,14 +537,6 @@ public class Task13 extends JFrame {
                 returnToMainMenu();
             }
         });
-    }
-
-    private void returnToMainMenu() {
-        dispose();
-        if (mainMenuFrame != null) {
-            mainMenuFrame.setVisible(true);
-            mainMenuFrame.toFront();
-        }
     }
 
     public static void task13(JFrame mainMenuFrame) {
