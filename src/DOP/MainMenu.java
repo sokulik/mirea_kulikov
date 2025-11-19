@@ -1,4 +1,4 @@
-import DOP.PracticeTasksWindow;
+package DOP;
 
 import javax.swing.*;
 import java.awt.*;
